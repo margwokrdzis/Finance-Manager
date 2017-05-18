@@ -13,9 +13,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void CreateAccount(View view) {
+    public void login(View view) {
+        Intent intent = new Intent(this, MainWindowActivity.class);
+        startActivity(intent);
+    }
 
-        Intent intent = new Intent(this, ClientListActivity.class);
+
+    public void createAccount(View view) {
+        Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
     }
 }

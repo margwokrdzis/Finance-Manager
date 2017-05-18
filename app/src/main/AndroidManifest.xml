@@ -23,7 +23,8 @@
         <activity android:name=".OutgoingsActivity" />
         <activity android:name=".CreateInvoiceActivity" />
         <activity android:name=".AddIncomeActivity" />
-        <activity android:name=".AddOutgoingsActivity"></activity>
+        <activity android:name=".AddOutgoingsActivity" />
+        <activity android:name=".MonthlyStatisticsActivity"></activity>
     </application>
 
 </manifest>

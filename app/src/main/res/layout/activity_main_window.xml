@@ -38,6 +38,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="50dp"
+                android:onClick="clientList"
                 android:text="Lista Klientów" />
 
             <Button
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
+                android:onClick="incomeList"
                 android:text="Wpłaty" />
 
             <Button
@@ -54,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
+                android:onClick="outgoingsList"
                 android:text="Wypłaty" />
 
             <Button
@@ -62,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
+                android:onClick="createInvoice"
                 android:text="Wystawienie Faktury" />
 
             <Button
@@ -70,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
+                android:onClick="monthlyStatistics"
                 android:text="Miesięczne Statystki" />
 
             <Button

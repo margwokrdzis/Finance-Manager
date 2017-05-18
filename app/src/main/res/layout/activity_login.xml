@@ -60,13 +60,14 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="login"
                 android:text="Zaloguj" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="CreateAccount"
+                android:onClick="createAccount"
                 android:text="Stwórz konto" />
         </LinearLayout>
     </ScrollView>
