@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="appzaliczenie.financemanager">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +26,8 @@
         <activity android:name=".CreateInvoiceActivity" />
         <activity android:name=".AddIncomeActivity" />
         <activity android:name=".AddOutgoingsActivity" />
-        <activity android:name=".MonthlyStatisticsActivity"></activity>
+        <activity android:name=".MonthlyStatisticsActivity" />
+        <activity android:name=".AddNewClientActivity"></activity>
     </application>
 
 </manifest>

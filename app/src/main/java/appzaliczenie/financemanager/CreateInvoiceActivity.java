@@ -13,8 +13,11 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_invoice);
     }
 
-    public void addIncomeItem(View view) {
-        Intent intent = new Intent(this, AddIncomeActivity.class);
-        startActivity(intent);
+    public void sendInvoice(View view) {
+
+    }
+
+    public void addInvoice(View view) {
+
     }
 }

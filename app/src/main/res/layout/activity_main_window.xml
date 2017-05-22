@@ -27,12 +27,12 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Witaj, co chce zrobić ?"
+                android:text="Witaj, co chcesz zrobić ?"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/showCLButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -42,7 +42,7 @@
                 android:text="Lista Klientów" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/showIncomeButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -51,7 +51,7 @@
                 android:text="Wpłaty" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/showOutgoingsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -60,7 +60,7 @@
                 android:text="Wypłaty" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/invoicesButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -69,7 +69,7 @@
                 android:text="Wystawienie Faktury" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/monthyStatsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -78,7 +78,7 @@
                 android:text="Miesięczne Statystki" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/calcButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
