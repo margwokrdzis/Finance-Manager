@@ -9,7 +9,7 @@ public class MainWindowActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Okno po zalogowniu");
+        setTitle("Okno po zalogowniu takie o");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_window);
     }
