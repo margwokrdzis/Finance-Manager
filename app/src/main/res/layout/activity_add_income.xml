@@ -19,7 +19,7 @@
         android:text="Za co wpłata" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/incomeDescriptionET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -33,7 +33,7 @@
         android:text="Kwota" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/incomeAmountET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,18 +47,19 @@
         android:text="Data" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/incomeDateET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Podaj Date"
-        android:inputType="textPersonName" />
+        android:inputType="datetime" />
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/addIncomeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
+        android:onClick="addIncomeItem"
         android:text="Dodaj" />
 </LinearLayout>

@@ -38,15 +38,17 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/sendEmailButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="sendInvoice"
         android:text="Wyślij na e-mail" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/addNewInvoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dodaj"/>
+        android:onClick="sendInvoice"
+        android:text="Dodaj" />
 
 </LinearLayout>

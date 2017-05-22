@@ -22,9 +22,10 @@
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/addNewOutgoingButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="addOutgoingsItem"
         android:text="Dodaj" />
 
     <ScrollView

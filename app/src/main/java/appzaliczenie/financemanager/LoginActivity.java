@@ -19,9 +19,14 @@ public class LoginActivity extends AppCompatActivity implements DatabaseOperatio
         passwordET = (EditText) findViewById(R.id.passwordET);
     }
 
-    public void CreateAccount(View view) {
+    public void login(View view) {
+        Intent intent = new Intent(this, MainWindowActivity.class);
+        startActivity(intent);
+    }
 
-        Intent intent = new Intent(this, ClientListActivity.class);
+
+    public void createAccount(View view) {
+        Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
     }
 

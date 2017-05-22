@@ -25,7 +25,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Uzupełnij dane firmy"
+                android:text="Uzupełnij dane nowego Klienta"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
@@ -39,7 +39,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/companyNameET"
+                android:id="@+id/newCompanyNameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -55,7 +55,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/emailET"
+                android:id="@+id/newEmailET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -71,7 +71,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/phoneET"
+                android:id="@+id/newPhoneET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -89,11 +89,11 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/nipET"
+                android:id="@+id/newNipET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Podaj kod pocztowy"
+                android:hint="Podaj NIP"
                 android:inputType="numberDecimal"
                 android:selectAllOnFocus="false" />
 
@@ -107,7 +107,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/cityET"
+                android:id="@+id/newCityET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -116,7 +116,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/streetET"
+                android:id="@+id/newStreetET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -125,7 +125,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/buildingNumET"
+                android:id="@+id/newBuildingNumET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -134,7 +134,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/PremisesET"
+                android:id="@+id/newPremisesET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -143,7 +143,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/postalCodeET"
+                android:id="@+id/newPostalCodeET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -152,10 +152,10 @@
                 android:selectAllOnFocus="false" />
 
             <Button
-                android:id="@+id/addNewAccButton"
+                android:id="@+id/addNewClientButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="addNewAcc"
+                android:onClick="addNewClient"
                 android:text="Stwórz" />
 
 
