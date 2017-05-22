@@ -41,7 +41,7 @@
                 app:srcCompat="@drawable/minionek" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/loginET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -49,7 +49,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/passwordET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -57,13 +57,14 @@
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="onLogin"
                 android:text="Zaloguj" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="CreateAccount"
