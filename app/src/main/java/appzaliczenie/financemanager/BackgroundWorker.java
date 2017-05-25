@@ -1,7 +1,6 @@
 package appzaliczenie.financemanager;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,7 +23,6 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
     private Context context;
     private String operationType;
     private URL url;
-    private AlertDialog alertDialog;
 
     public BackgroundWorker(Context context){
         this.context = context;
@@ -36,41 +34,13 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
         operationType = params[2];
 
         if(operationType.equals(LOGIN)){
-            try {
-                String userName = params[0];
-                String password = params[1];
-                url = new URL(LOGIN_SERVICE);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
+            String result = loginDatabase(LOGIN_SERVICE, params);
+            return result;
+        }
+        else if(operationType.equals(CREATE_ACCOUNT)) {
 
-                OutputStream output= httpURLConnection.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output, "UTF-8"));
-                String postData = URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(userName, "UTF-8")+"&"+
-                        URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
-                System.out.println(userName + " " + password);
-                writer.write(postData);
-                writer.flush();
-                writer.close();
-                output.close();
-
-                InputStream input = httpURLConnection.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(input,"iso-8859-1"));
-                String result = "";
-                String line = "";
-                while((line = reader.readLine())!=null){
-                    result += line;
-                }
-                reader.close();
-                input.close();
-                httpURLConnection.disconnect();
-                return result;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            String result = loginDatabase(CREATE_ACCOUNT_SERVICE, params);
+            return result;
         }
         return null;
     }
@@ -82,8 +52,6 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
 
     @Override
     protected void onPostExecute(String result) {
-        System.out.println(operationType);
-        System.out.println(result);
         if(operationType.equals(LOGIN)) {
             if(result.equals(SUCCESS)){
                 Intent intent = new Intent(context, MainWindowActivity.class);
@@ -95,6 +63,57 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
 
             }
         }
+        else if(operationType.equals(CREATE_ACCOUNT)){
+            if(result.equals(SUCCESS)){
+                Intent intent = new Intent(context, MainWindowActivity.class);
+                context.startActivity(intent);
+                Activity activity = (Activity) context;
+                activity.finish();
+            }
+            else if(result.equals(FAILED)){
+
+            }
+        }
 
     }
+
+    private String loginDatabase(String service_url, String... params){
+        try {
+            String userName = params[0];
+            String password = params[1];
+            url = new URL(service_url);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+
+            OutputStream output= httpURLConnection.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output, "UTF-8"));
+            String postData = URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(userName, "UTF-8")+"&"+
+                    URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
+            System.out.println(userName + " " + password);
+            writer.write(postData);
+            writer.flush();
+            writer.close();
+            output.close();
+
+            InputStream input = httpURLConnection.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input,"iso-8859-1"));
+            String result = "";
+            String line = "";
+            while((line = reader.readLine())!=null){
+                result += line;
+            }
+            reader.close();
+            input.close();
+            httpURLConnection.disconnect();
+            return result;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+

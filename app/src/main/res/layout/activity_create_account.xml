@@ -30,6 +30,40 @@
                 android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Dane logowania"
+                android:textAlignment="viewStart"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/setLoginET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="wprowadz swoj login"
+                android:inputType="textCapWords" />
+
+            <EditText
+                android:id="@+id/setPasswordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="wprowadz swoje hasło"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/setPasswordRepeatET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="powtorz swoje hasło"
+                android:inputType="textPassword" />
+
+
+            <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,7 +189,7 @@
                 android:id="@+id/addNewAccButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="addNewAcc"
+                android:onClick="onAddNewAcc"
                 android:text="Stwórz" />
 
 
