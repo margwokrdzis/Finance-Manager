@@ -39,4 +39,13 @@ public class MainWindowActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void updateProfile(View view){
+        Intent intent = new Intent(this, MyProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void logout(View view) {
+
+    }
+
 }

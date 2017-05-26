@@ -21,13 +21,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Uzupełnij dane firmy"
-                android:textAlignment="center"
-                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -63,133 +56,12 @@
                 android:inputType="textPassword" />
 
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Nazwa firmy"
-                android:textAlignment="viewStart"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/companyNameET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Wprowadz nazwę firmy"
-                android:inputType="textCapWords" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Adres e-mail"
-                android:textAlignment="viewStart"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/emailET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj adres e-mail"
-                android:inputType="textWebEmailAddress" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Numer Telefonu"
-                android:textAlignment="viewStart"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/phoneET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj numer telefonu"
-                android:inputType="phone"
-                android:selectAllOnFocus="false" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="NIP"
-                android:textAlignment="viewStart"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/nipET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj kod pocztowy"
-                android:inputType="numberDecimal"
-                android:selectAllOnFocus="false" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Adres Firmy"
-                android:textAlignment="viewStart"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/cityET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj Miasto"
-                android:inputType="textCapWords"
-                android:selectAllOnFocus="false" />
-
-            <EditText
-                android:id="@+id/streetET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj Ulice"
-                android:inputType="textCapWords"
-                android:selectAllOnFocus="false" />
-
-            <EditText
-                android:id="@+id/buildingNumET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj numer budynku"
-                android:inputType="textCapWords|phone"
-                android:selectAllOnFocus="false" />
-
-            <EditText
-                android:id="@+id/PremisesET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj numer lokalu"
-                android:inputType="textCapWords|phone"
-                android:selectAllOnFocus="false" />
-
-            <EditText
-                android:id="@+id/postalCodeET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Podaj kod pocztowy"
-                android:inputType="textCapWords|phone"
-                android:selectAllOnFocus="false" />
 
             <Button
                 android:id="@+id/addNewAccButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onAddNewAcc"
+                android:onClick="addNewAcc"
                 android:text="Stwórz" />
 
 

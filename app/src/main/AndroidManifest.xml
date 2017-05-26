@@ -27,7 +27,8 @@
         <activity android:name=".AddIncomeActivity" />
         <activity android:name=".AddOutgoingsActivity" />
         <activity android:name=".MonthlyStatisticsActivity" />
-        <activity android:name=".AddNewClientActivity"></activity>
+        <activity android:name=".AddNewClientActivity" />
+        <activity android:name=".MyProfileActivity"></activity>
     </application>
 
 </manifest>

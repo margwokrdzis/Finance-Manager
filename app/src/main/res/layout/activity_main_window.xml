@@ -32,12 +32,21 @@
                 android:textSize="30sp" />
 
             <Button
-                android:id="@+id/showCLButton"
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="50dp"
+                android:onClick="updateProfile"
+                android:text="Dane Mojej Firmy" />
+
+            <Button
+                android:id="@+id/showCLButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:onClick="clientList"
                 android:text="Lista Klientów" />
 
@@ -83,7 +92,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:text="Kalkulator" />
+                android:text="Kalkulator"/>
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:onClick="logout"
+                android:text="Logout" />
 
         </LinearLayout>
     </ScrollView>
