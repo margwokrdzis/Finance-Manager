@@ -69,6 +69,12 @@
                 android:layout_height="wrap_content"
                 android:onClick="createAccount"
                 android:text="Stwórz konto" />
+
+            <CheckBox
+                android:id="@+id/saveLoginCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zapamietać dane logowania?" />
         </LinearLayout>
     </ScrollView>
 
