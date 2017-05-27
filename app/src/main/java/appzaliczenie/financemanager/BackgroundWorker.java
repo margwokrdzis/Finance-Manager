@@ -4,13 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.widget.ListAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
+import android.widget.SimpleAdapter;
+
 
 public class BackgroundWorker extends AsyncTask<String, String, String> implements DatabaseOperations{
 
@@ -60,8 +65,8 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
 
     @Override
     protected void onPostExecute(String result) {
-    }
 
+    }
 
     private void addRevenueAndExpensesOperation(String type, JSONParser jsonParser, String... params){
         id_company = sp.getString("id_company", "");

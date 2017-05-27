@@ -8,6 +8,7 @@ public interface DatabaseOperations {
 
     String CREATE_CLIENT = "createClient";
     String GET_CLIENT_LIST = "getClients";
+    String GET_INCOME_LIST = "getIncomeList";
 
     String CHANGE_CLIENT_DATA = "changeClient";
     String CHANGE_COMPANY_DATA = "changeCompany";
@@ -32,8 +33,17 @@ public interface DatabaseOperations {
     String DELETE_OUTGOING_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/deleteOutgoing.php";
     String DELETE_INCOME_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/deleteIncome.php";
     String GET_COMPANY_ID_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getCompanyID.php";
+    String GET_INCOME_LIST_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getIncomes.php";
+    String GET_OUTGOINGS_LIST_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getOutgoings.php";
 
 
     String SUCCESS_TAG = "success";
     String ID_COMPANY_TAG = "id_company";
+    String INCOMING_TAG = "incomings";
+    String OUTGOING_TAG = "outgoings";
+    String ID_INCOMING_TAG = "id_incomings";
+    String ID_OUTGOINGS_TAG = "id_outgoings";
+    String TAG_NAME = "name";
+    String TAG_DATE = "date";
+    String TAG_AMMOUNT = "ammount";
 }
