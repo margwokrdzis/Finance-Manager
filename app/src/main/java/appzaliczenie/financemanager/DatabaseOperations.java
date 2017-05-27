@@ -4,7 +4,7 @@ package appzaliczenie.financemanager;
 public interface DatabaseOperations {
     String LOGIN = "login";
     String CREATE_ACCOUNT = "createAccount";
-    String CREATE_COMPANY = "cateCompany";
+    String CREATE_COMPANY = "createCompany";
 
     String CREATE_CLIENT = "createClient";
     String GET_CLIENT_LIST = "getClients";
@@ -31,8 +31,9 @@ public interface DatabaseOperations {
     String DELETE_CLIENT_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/deleteClient.php";
     String DELETE_OUTGOING_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/deleteOutgoing.php";
     String DELETE_INCOME_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/deleteIncome.php";
+    String GET_COMPANY_ID_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getCompanyID.php";
 
 
-    String SUCCESS = "success";
-    String FAILED = "fail";
+    String SUCCESS_TAG = "success";
+    String ID_COMPANY_TAG = "id_company";
 }

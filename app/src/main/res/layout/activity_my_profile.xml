@@ -134,7 +134,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/PremisesET"
+                android:id="@+id/doorNumET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

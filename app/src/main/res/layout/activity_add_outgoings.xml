@@ -46,13 +46,21 @@
         android:layout_height="wrap_content"
         android:text="Data" />
 
-    <EditText
-        android:id="@+id/outgoingDateET"
+    <Button
+        android:id="@+id/pickOutgoingDateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Podaj Date"
-        android:inputType="datetime" />
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:text="Wybierz Date" />
+
+
+    <TextView
+        android:id="@+id/dateOutgoingTW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp" />
 
     <Button
         android:id="@+id/addOutgoingButton"
@@ -60,6 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:onClick="addOutgoingItem"
+        android:onClick="onAddOutgoingItem"
         android:text="Dodaj" />
 </LinearLayout>

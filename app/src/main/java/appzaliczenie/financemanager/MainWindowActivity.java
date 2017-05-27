@@ -14,38 +14,41 @@ public class MainWindowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_window);
     }
 
-    public void clientList(View view) {
+    public void onClientList(View view) {
         Intent intent = new Intent(this, ClientListActivity.class);
         startActivity(intent);
     }
 
-    public void incomeList(View view) {
+    public void onIncomeList(View view) {
         Intent intent = new Intent(this, IncomeActivity.class);
         startActivity(intent);
     }
 
-    public void outgoingsList(View view) {
+    public void onOutgoingsList(View view) {
         Intent intent = new Intent(this, OutgoingsActivity.class);
         startActivity(intent);
     }
 
-    public void createInvoice(View view) {
+    public void onCreateInvoice(View view) {
         Intent intent = new Intent(this, CreateInvoiceActivity.class);
         startActivity(intent);
     }
 
-    public void monthlyStatistics(View view) {
+    public void onMonthlyStatistics(View view) {
         Intent intent = new Intent(this, MonthlyStatisticsActivity.class);
         startActivity(intent);
     }
 
-    public void updateProfile(View view){
+    public void onUpdateProfile(View view){
         Intent intent = new Intent(this, MyProfileActivity.class);
         startActivity(intent);
     }
 
-    public void logout(View view) {
-
+    public void onLogout(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 }

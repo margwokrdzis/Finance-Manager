@@ -61,7 +61,7 @@
                 android:id="@+id/addNewAccButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="addNewAcc"
+                android:onClick="onAddNewAcc"
                 android:text="Stwórz" />
 
 
