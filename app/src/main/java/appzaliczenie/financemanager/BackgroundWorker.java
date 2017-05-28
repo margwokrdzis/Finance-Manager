@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.ListAdapter;
 
 import org.json.JSONArray;
@@ -235,7 +237,15 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
                 }
 
             } else {
-                //blad
+                Handler handler = new Handler(Looper.getMainLooper());
+
+                handler.post(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        new Toast("Login zajety", context);
+                    }
+                });
             }
         } catch (JSONException e) {
             e.printStackTrace();
