@@ -6,18 +6,23 @@
     android:layout_height="match_parent"
     android:weightSum="100">
 
+    <TextView
+        android:id="@+id/incomeIdTV"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <TextView
-        android:gravity="center"
-        android:textAlignment="center"
-        android:id="@+id/textView10"
+        android:id="@+id/incNameTV"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_weight="33.3"
+        android:gravity="center"
         android:text="Za co "
-        android:layout_weight="33.3"/>
+        android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/incDateTV"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_weight="33.3"
@@ -25,13 +30,12 @@
         android:text="Data" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/incAmmountTV"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_weight="33.3"
         android:gravity="center"
         android:text="Kwota" />
-
 
 
 </LinearLayout>

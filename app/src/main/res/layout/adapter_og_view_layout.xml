@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:weightSum="100">
 
+    <TextView
+        android:id="@+id/outgoingIdTV"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <TextView
         android:gravity="center"

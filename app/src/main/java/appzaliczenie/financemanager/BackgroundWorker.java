@@ -1,49 +1,62 @@
 package appzaliczenie.financemanager;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.widget.ListAdapter;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import android.widget.SimpleAdapter;
 
 
 public class BackgroundWorker extends AsyncTask<String, String, String> implements DatabaseOperations{
 
     private Context context;
     private String operationType;
-    private URL url;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor edit;
+    private String id_company = null;
 
     public BackgroundWorker(Context context){
         this.context = context;
+        sp = context.getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
+        edit = sp.edit();
     }
 
 
     @Override
     protected String doInBackground(String... params) {
-        operationType = params[2];
 
-        if(operationType.equals(LOGIN)){
-            String result = loginDatabase(LOGIN_SERVICE, params);
-            return result;
+        JSONParser jsonParser = new JSONParser();
+        operationType = params[0];
+        if(operationType.equals(LOGIN)) {
+            loginDatabaseOperation(LOGIN_SERVICE, jsonParser, params);
         }
-        else if(operationType.equals(CREATE_ACCOUNT)) {
+        else if(operationType.equals(CREATE_ACCOUNT)){
+            loginDatabaseOperation(CREATE_ACCOUNT_SERVICE, jsonParser, params);
+        }
+        else if(operationType.equals(CREATE_COMPANY)){
+            createCompanyOperation(CREATE_COMPANY_SERVICE, jsonParser, params);
+        }
+        else if(operationType.equals(ADD_INCOME)){
+            addRevenueAndExpensesOperation(ADD_INCOME_SERVICE, jsonParser, params);
+        }
+        else if(operationType.equals(ADD_OUTGOING)){
+            addRevenueAndExpensesOperation(ADD_OUTGOING_SERVICE, jsonParser, params);
+        }
 
-            String result = loginDatabase(CREATE_ACCOUNT_SERVICE, params);
-            return result;
-        }
         return null;
     }
+
+
 
     @Override
     protected void onProgressUpdate(String... values) {
@@ -52,68 +65,131 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
 
     @Override
     protected void onPostExecute(String result) {
-        if(operationType.equals(LOGIN)) {
-            if(result.equals(SUCCESS)){
-                Intent intent = new Intent(context, MainWindowActivity.class);
-                context.startActivity(intent);
-                Activity activity = (Activity) context;
-                activity.finish();
-            }
-            else if(result.equals(FAILED)) {
-
-            }
-        }
-        else if(operationType.equals(CREATE_ACCOUNT)){
-            if(result.equals(SUCCESS)){
-                Intent intent = new Intent(context, MainWindowActivity.class);
-                context.startActivity(intent);
-                Activity activity = (Activity) context;
-                activity.finish();
-            }
-            else if(result.equals(FAILED)){
-
-            }
-        }
 
     }
 
-    private String loginDatabase(String service_url, String... params){
+    private void addRevenueAndExpensesOperation(String type, JSONParser jsonParser, String... params){
+        id_company = sp.getString("id_company", "");
+
+        String name = params[1];
+        String ammount = params[2];
+        String date = params[3];
+
+        List<NameValuePair> list = new ArrayList<>();
+        list.add(new BasicNameValuePair("id_company", id_company));
+        list.add(new BasicNameValuePair("name", name));
+        list.add(new BasicNameValuePair("ammount", ammount));
+        list.add(new BasicNameValuePair("date", date));
+        JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
+
         try {
-            String userName = params[0];
-            String password = params[1];
-            url = new URL(service_url);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
+            int success = json.getInt(SUCCESS_TAG);
 
-            OutputStream output= httpURLConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output, "UTF-8"));
-            String postData = URLEncoder.encode("userName", "UTF-8")+"="+URLEncoder.encode(userName, "UTF-8")+"&"+
-                    URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
-            System.out.println(userName + " " + password);
-            writer.write(postData);
-            writer.flush();
-            writer.close();
-            output.close();
+            if (success == 1) {
+                Intent intent = new Intent(context, MainWindowActivity.class);
+                context.startActivity(intent);
 
-            InputStream input = httpURLConnection.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input,"iso-8859-1"));
-            String result = "";
-            String line = "";
-            while((line = reader.readLine())!=null){
-                result += line;
+            } else {
+                //blad
             }
-            reader.close();
-            input.close();
-            httpURLConnection.disconnect();
-            return result;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
+    }
+
+    private void loginDatabaseOperation(String type, JSONParser jsonParser, String... params){
+
+        String userName = params[1];
+        String password = params[2];
+
+        List<NameValuePair> list = new ArrayList<>();
+        list.add(new BasicNameValuePair("userName", userName));
+        list.add(new BasicNameValuePair("password", password));
+        JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
+
+        try {
+            int success = json.getInt(SUCCESS_TAG);
+
+            if (success == 1) {
+                int idGetSuccess;
+                try {
+                    // Building Parameters
+                    List<NameValuePair> idList = new ArrayList<>();
+                    idList.add(new BasicNameValuePair("userName", userName));
+
+                    JSONObject jsonID = jsonParser.makeHttpRequest(GET_COMPANY_ID_SERVICE, "GET", idList);
+
+
+                    // json success tag
+                    idGetSuccess = json.getInt(SUCCESS_TAG);
+                    if (idGetSuccess == 1) {
+                        // successfully received product details
+                        JSONArray idObj = jsonID.getJSONArray(ID_COMPANY_TAG); // JSON Array
+
+                        // get first product object from JSON Array
+                        JSONObject id = idObj.getJSONObject(0);
+
+
+                        id_company =  id.getString(ID_COMPANY_TAG);
+
+                    }else{
+                        // product with pid not found
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(context, MainWindowActivity.class);
+                edit.putString("id_company", id_company);
+                edit.commit();
+                System.out.println("Zapisane id: " + sp.getString("id_company", ""));
+                System.out.println("ID " + id_company);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                context.startActivity(intent);
+
+            } else {
+                //blad
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createCompanyOperation(String type, JSONParser jsonParser, String... params){
+        String id_company = params[1];
+        String companyName = params[2];
+        String companyEmail = params[3];
+        String companyPhoneNumber = params[4];
+        String companyNIP = params[5];
+        String companyAdress = params[6];
+        String companyCity = params[7];
+        String companyPostalCode = params[8];
+
+        List<NameValuePair> list = new ArrayList<>();
+        list.add(new BasicNameValuePair("id_company", id_company));
+        list.add(new BasicNameValuePair("companyName", companyName));
+        list.add(new BasicNameValuePair("companyEmail", companyEmail));
+        list.add(new BasicNameValuePair("companyPhoneNumber", companyPhoneNumber));
+        list.add(new BasicNameValuePair("companyNIP", companyNIP));
+        list.add(new BasicNameValuePair("companyAdress", companyAdress));
+        list.add(new BasicNameValuePair("companyCity", companyCity));
+        list.add(new BasicNameValuePair("companyPostalCode", companyPostalCode));
+
+        JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
+        System.out.println(CREATE_COMPANY_SERVICE);
+
+        try {
+            int success = json.getInt(SUCCESS_TAG);
+
+            if (success == 1) {
+                Intent intent = new Intent(context, MainWindowActivity.class);
+                context.startActivity(intent);
+
+            } else {
+                //blad
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
-

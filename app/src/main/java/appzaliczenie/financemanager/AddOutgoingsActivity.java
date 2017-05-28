@@ -15,11 +15,12 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class AddOutgoingsActivity extends AppCompatActivity {
+public class AddOutgoingsActivity extends AppCompatActivity implements DatabaseOperations{
 
 
     private TextView mDateDisplay;
     private Button mPickDate;
+    private EditText nameET, ammountET;
 
     private int mYear;
     private int mMonth;
@@ -34,15 +35,17 @@ public class AddOutgoingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_outgoings);
 
-        final EditText et = (EditText) findViewById(R.id.outgoingAmountET);
-        et.setFilters(new InputFilter[] {
+        ammountET = (EditText) findViewById(R.id.outgoingAmountET);
+        nameET = (EditText) findViewById(R.id.outgoingDescriptionET);
+
+        ammountET.setFilters(new InputFilter[] {
                 new DigitsKeyListener(Boolean.FALSE, Boolean.TRUE) {
                     int beforeDecimal = 6, afterDecimal = 2;
 
                     @Override
                     public CharSequence filter(CharSequence source, int start, int end,
                                                Spanned dest, int dstart, int dend) {
-                        String temp = et.getText() + source.toString();
+                        String temp = ammountET.getText() + source.toString();
 
                         if (temp.equals(".")) {
                             return "0.";
@@ -121,8 +124,14 @@ public class AddOutgoingsActivity extends AppCompatActivity {
                 }
             };
 
-    public void addOutgoingItem(View view){
+    public void onAddOutgoingItem(View view){
+        String name = nameET.getText().toString();
+        String ammount = ammountET.getText().toString();
+        String date = mDateDisplay.getText().toString();
+        System.out.println("DATAAAAAAAAAAAAA: " + date);
 
+        BackgroundWorker loginWorker = new BackgroundWorker(this);
+        loginWorker.execute(ADD_OUTGOING, name, ammount, date);
     }
 }
 

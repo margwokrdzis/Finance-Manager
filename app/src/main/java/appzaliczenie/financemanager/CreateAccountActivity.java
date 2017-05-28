@@ -8,6 +8,7 @@ import android.widget.EditText;
 public class CreateAccountActivity extends AppCompatActivity implements DatabaseOperations{
 
     private EditText userNameET, passwordET, repeatPasswordET;
+    private Toast msg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Tworzenie profilu");
@@ -26,10 +27,10 @@ public class CreateAccountActivity extends AppCompatActivity implements Database
 
         if(password.equals(repeatPassword)) {
             BackgroundWorker loginWorker = new BackgroundWorker(this);
-            loginWorker.execute(userName, password, CREATE_ACCOUNT);
+            loginWorker.execute(CREATE_ACCOUNT, userName, password);
         }
         else{
-            //bledne dane
+            msg = new Toast("Bledne dane", this);
         }
     }
 }

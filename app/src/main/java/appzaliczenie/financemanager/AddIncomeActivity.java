@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 
-public class AddIncomeActivity extends AppCompatActivity {
+public class AddIncomeActivity extends AppCompatActivity implements DatabaseOperations{
 
     private TextView mDateDisplay;
     private Button mPickDate;
@@ -28,6 +28,9 @@ public class AddIncomeActivity extends AppCompatActivity {
 
     static final int DATE_DIALOG_ID = 0;
 
+    private EditText nameET, ammountET;
+    private TextView dateTV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_income);
 
         final EditText et = (EditText) findViewById(R.id.incomeAmountET);
-        et.setFilters(new InputFilter[] {
+        et.setFilters(new InputFilter[]{
                 new DigitsKeyListener(Boolean.FALSE, Boolean.TRUE) {
                     int beforeDecimal = 6, afterDecimal = 2;
 
@@ -47,8 +50,7 @@ public class AddIncomeActivity extends AppCompatActivity {
 
                         if (temp.equals(".")) {
                             return "0.";
-                        }
-                        else if (temp.toString().indexOf(".") == -1) {
+                        } else if (temp.toString().indexOf(".") == -1) {
                             // no decimal point placed yet
                             if (temp.length() > beforeDecimal) {
                                 return "";
@@ -63,9 +65,6 @@ public class AddIncomeActivity extends AppCompatActivity {
                     }
                 }
         });
-
-
-
 
 
 // capture our View elements
@@ -87,6 +86,10 @@ public class AddIncomeActivity extends AppCompatActivity {
 
         // display the current date (this method is below)
         updateDisplay();
+
+        nameET = (EditText) findViewById(R.id.incomeDescriptionET);
+        ammountET = (EditText) findViewById(R.id.incomeAmountET);
+        dateTV = (TextView) findViewById(R.id.dateIncomeTW);
     }
 
     @Override
@@ -111,32 +114,21 @@ public class AddIncomeActivity extends AppCompatActivity {
     }
 
     // the callback received when the user "sets" the date in the dialog
-    private DatePickerDialog.OnDateSetListener mDateSetListener =
-            new DatePickerDialog.OnDateSetListener() {
-                public void onDateSet(DatePicker view, int year,
-                                      int monthOfYear, int dayOfMonth) {
-                    mYear = year;
-                    mMonth = monthOfYear;
-                    mDay = dayOfMonth;
-                    updateDisplay();
-                }
-            };
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+            updateDisplay();
+        }
+    };
 
+    public void onAddIncomeItem(View view) {
+        String name = nameET.getText().toString();
+        String ammount = ammountET.getText().toString();
+        String date = dateTV.getText().toString();
 
-/*
-
-
-
-*/
-
-
-
-
-    public void addIncomeItem(View view){
-
+        BackgroundWorker bw = new BackgroundWorker(this);
+        bw.execute(ADD_INCOME, name, ammount, date);
     }
-
-
-
-
 }

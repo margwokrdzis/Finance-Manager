@@ -68,6 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:onClick="addOutgoingItem"
+        android:onClick="onAddOutgoingItem"
         android:text="Dodaj" />
 </LinearLayout>
