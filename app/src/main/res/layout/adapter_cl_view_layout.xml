@@ -6,15 +6,20 @@
     android:layout_height="match_parent"
     android:weightSum="100">
 
+    <TextView
+        android:id="@+id/clientIdTV"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <TextView
-        android:gravity="center"
-        android:textAlignment="center"
-        android:id="@+id/textView10"
+        android:id="@+id/clientNameTV"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_weight="66.6"
+        android:gravity="center"
         android:text="Nazwa Klienta"
-        android:layout_weight="66.6"/>
+        android:textAlignment="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,17 +28,17 @@
         android:weightSum="33.3">
 
         <TextView
-            android:gravity="center"
-            android:id="@+id/textView11"
+            android:id="@+id/clientPhoneNumbTV"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:gravity="center"
             android:text="Numer Telefonu" />
 
         <TextView
-            android:gravity="center"
-            android:id="@+id/textView12"
+            android:id="@+id/clientEmailTV"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:gravity="center"
             android:text="E-mail" />
     </LinearLayout>
 

@@ -1,6 +1,10 @@
 package appzaliczenie.financemanager;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -23,6 +27,7 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
     private SharedPreferences sp;
     private SharedPreferences.Editor edit;
     private String id_company = null;
+    private ProgressDialog pDialog;
 
     public BackgroundWorker(Context context){
         this.context = context;
@@ -43,7 +48,7 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
             loginDatabaseOperation(CREATE_ACCOUNT_SERVICE, jsonParser, params);
         }
         else if(operationType.equals(CREATE_COMPANY)){
-            createCompanyOperation(CREATE_COMPANY_SERVICE, jsonParser, params);
+            createProfile(CREATE_COMPANY_SERVICE, jsonParser, params);
         }
         else if(operationType.equals(ADD_INCOME)){
             addRevenueAndExpensesOperation(ADD_INCOME_SERVICE, jsonParser, params);
@@ -51,12 +56,89 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
         else if(operationType.equals(ADD_OUTGOING)){
             addRevenueAndExpensesOperation(ADD_OUTGOING_SERVICE, jsonParser, params);
         }
+        else if(operationType.equals(CREATE_CLIENT)){
+            createProfile(CREATE_CLIENT_SERVICE, jsonParser, params);
+        }
+        else if(operationType.equals(DELETE_CLIENT)){
+            deleteClient(DELETE_CLIENT_SERVICE, jsonParser, params);
+        }
+        else if(operationType.equals(UPDATE_COMPANY_DATA)){
+            updateCompanyData(UPDATE_COMPANY_DATA_SERVICE, jsonParser, params);
+        }
 
         return null;
     }
+    private void updateCompanyData(String type, JSONParser jsonParser, String... params){
+        String id_company = params[1];
+        String name = params[2];
+        String email = params[3];
+        String phoneNumber = params[4];
+        String nip = params[5];
+        String city = params[6];
+        String postalCode = params[7];
+        String street = params[8];
+        String building_number = params[9];
+        String door_number = params[10];
 
+        List<NameValuePair> list = new ArrayList<>();
+        list.add(new BasicNameValuePair("id_company", id_company));
+        list.add(new BasicNameValuePair("name", name));
+        list.add(new BasicNameValuePair("email", email));
+        list.add(new BasicNameValuePair("phoneNumber", phoneNumber));
+        list.add(new BasicNameValuePair("nip", nip));
+        list.add(new BasicNameValuePair("city", city));
+        list.add(new BasicNameValuePair("postalCode", postalCode));
+        list.add(new BasicNameValuePair("street", street));
+        list.add(new BasicNameValuePair("building_number", building_number));
+        list.add(new BasicNameValuePair("door_number", door_number));
 
+        // sending modified data through http request
+        // Notice that update product url accepts POST method
+        JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
 
+        // check json success tag
+        try {
+            int success = json.getInt(SUCCESS_TAG);
+
+            if (success == 1) {
+                ((Activity) context).finish();
+            } else {
+                // failed to update product
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteClient(String type, JSONParser jsonParser, String... params){
+        int success;
+        try {
+            String id_client = params[1];
+            List<NameValuePair> list = new ArrayList<>();
+            list.add(new BasicNameValuePair("id_client", id_client));
+
+            JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
+
+            success = json.getInt(SUCCESS_TAG);
+            if (success == 1) {
+                Intent intent = new Intent(context, ClientListActivity.class);
+                context.startActivity(intent);
+                ((Activity) context).finish();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        pDialog = new ProgressDialog(context);
+        pDialog.setMessage("Operation in progress...");
+        pDialog.setIndeterminate(false);
+        pDialog.setCancelable(true);
+        pDialog.show();
+    }
     @Override
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
@@ -64,7 +146,10 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
 
     @Override
     protected void onPostExecute(String result) {
-
+        if(operationType.equals(UPDATE_COMPANY_DATA)){
+            new Toast("Dane zaktualizowane", context);
+        }
+        pDialog.dismiss();
     }
 
     private void addRevenueAndExpensesOperation(String type, JSONParser jsonParser, String... params){
@@ -122,10 +207,8 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
                     // json success tag
                     idGetSuccess = json.getInt(SUCCESS_TAG);
                     if (idGetSuccess == 1) {
-                        // successfully received product details
                         JSONArray idObj = jsonID.getJSONArray(ID_COMPANY_TAG); // JSON Array
 
-                        // get first product object from JSON Array
                         JSONObject id = idObj.getJSONObject(0);
 
 
@@ -137,14 +220,19 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(context, MainWindowActivity.class);
                 edit.putString("id_company", id_company);
                 edit.commit();
-                System.out.println("Zapisane id: " + sp.getString("id_company", ""));
-                System.out.println("ID " + id_company);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                context.startActivity(intent);
+                if(operationType.equals(LOGIN)) {
+                    Intent intent = new Intent(context, MainWindowActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
+                }else{
+                    Intent intent = new Intent(context, MyProfileActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
+                }
 
             } else {
                 //blad
@@ -154,39 +242,46 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
         }
     }
 
-    private void createCompanyOperation(String type, JSONParser jsonParser, String... params){
+    private void createProfile(String type, JSONParser jsonParser, String... params){
         String id_company = params[1];
-        String companyName = params[2];
-        String companyEmail = params[3];
-        String companyPhoneNumber = params[4];
-        String companyNIP = params[5];
-        String companyCity = params[6];
-        String companyPostalCode = params[7];
-        String companyStreet = params[8];
-        String companyBuildingNumber = params[9];
-        String comapnyDoorNumber = params[10];
+        String name = params[2];
+        String email = params[3];
+        String phoneNumber = params[4];
+        String nip = params[5];
+        String city = params[6];
+        String postalCode = params[7];
+        String street = params[8];
+        String building_number = params[9];
+        String door_number = params[10];
 
         List<NameValuePair> list = new ArrayList<>();
         list.add(new BasicNameValuePair("id_company", id_company));
-        list.add(new BasicNameValuePair("companyName", companyName));
-        list.add(new BasicNameValuePair("companyEmail", companyEmail));
-        list.add(new BasicNameValuePair("companyPhoneNumber", companyPhoneNumber));
-        list.add(new BasicNameValuePair("companyNIP", companyNIP));
-        list.add(new BasicNameValuePair("companyCity", companyCity));
-        list.add(new BasicNameValuePair("companyPostalCode", companyPostalCode));
-        list.add(new BasicNameValuePair("street", companyStreet));
-        list.add(new BasicNameValuePair("building_number", companyBuildingNumber));
-        list.add(new BasicNameValuePair("door_number", comapnyDoorNumber));
+        list.add(new BasicNameValuePair("name", name));
+        list.add(new BasicNameValuePair("email", email));
+        list.add(new BasicNameValuePair("phoneNumber", phoneNumber));
+        list.add(new BasicNameValuePair("nip", nip));
+        list.add(new BasicNameValuePair("city", city));
+        list.add(new BasicNameValuePair("postalCode", postalCode));
+        list.add(new BasicNameValuePair("street", street));
+        list.add(new BasicNameValuePair("building_number", building_number));
+        list.add(new BasicNameValuePair("door_number", door_number));
 
         JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
-        System.out.println(CREATE_COMPANY_SERVICE);
 
         try {
             int success = json.getInt(SUCCESS_TAG);
 
             if (success == 1) {
-                Intent intent = new Intent(context, MainWindowActivity.class);
-                context.startActivity(intent);
+                if(operationType.equals(CREATE_CLIENT)) {
+                    Intent intent = new Intent(context, ClientListActivity.class);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                }
+                if(operationType.equals(CREATE_COMPANY)){
+                    Intent intent = new Intent(context, MainWindowActivity.class);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                }
 
             } else {
                 //blad

@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements DatabaseOperatio
         sp = getPreferences(Context.MODE_PRIVATE);
         edit = sp.edit();
         restoreLoginAndPassword();
+        cc = new CheckConnection(this);
     }
 
 
