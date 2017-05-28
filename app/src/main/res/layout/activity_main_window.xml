@@ -4,14 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:background="@color/colorBackGround">>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Witaj, co chcesz zrobić ?"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,90 +29,110 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/textView9"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Witaj, co chcesz zrobić ?"
-                android:textAlignment="center"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/updateButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="100dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginTop="50dp"
-                android:onClick="onUpdateProfile"
-                android:text="Dane Mojej Firmy" />
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp">
 
-            <Button
-                android:id="@+id/showCLButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onClientList"
-                android:text="Lista Klientów" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
-            <Button
-                android:id="@+id/showIncomeButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onIncomeList"
-                android:text="Wpłaty" />
+                    <ImageButton
+                        android:id="@+id/monthyStatsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onMonthlyStatistics"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/monthly_stat" />
 
-            <Button
-                android:id="@+id/showOutgoingsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onOutgoingsList"
-                android:text="Wypłaty" />
+                    <ImageButton
+                        android:id="@+id/calcButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onCalculator"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/tools" />
+                </TableRow>
 
-            <Button
-                android:id="@+id/invoicesButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onCreateInvoice"
-                android:text="Wystawienie Faktury" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
-            <Button
-                android:id="@+id/monthyStatsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onMonthlyStatistics"
-                android:text="Miesięczne Statystki" />
+                    <ImageButton
+                        android:id="@+id/updateButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:onClick="onUpdateProfile"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/my_profile" />
 
-            <Button
-                android:id="@+id/calcButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onCalculator"
-                android:text="Kalkulator" />
+                    <ImageButton
+                        android:id="@+id/showCLButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:baselineAlignBottom="false"
+                        android:onClick="onClientList"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/client_list" />
+                </TableRow>
 
-            <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:onClick="onLogout"
-                android:text="Logout" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
+                    <ImageButton
+                        android:id="@+id/showIncomeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onIncomeList"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/income" />
+
+                    <ImageButton
+                        android:id="@+id/showOutgoingsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onOutgoingsList"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/outgoings" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/logoutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:onClick="onLogout"
+                        android:padding="10dp"
+                        app:srcCompat="@mipmap/logout" />
+                </TableRow>
+
+            </TableLayout>
         </LinearLayout>
     </ScrollView>
 
