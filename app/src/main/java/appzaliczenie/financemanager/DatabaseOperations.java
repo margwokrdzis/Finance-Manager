@@ -10,6 +10,7 @@ public interface DatabaseOperations {
     String ADD_OUTGOING = "addOutgoing";
     String ADD_INCOME = "addIncome";
     String DELETE_CLIENT = "deleteClient";
+    String ACCOUNT_CREATED = "accountCreated";
 
     String LOGIN_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/login.php";
     String CREATE_ACCOUNT_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/createAccount.php";

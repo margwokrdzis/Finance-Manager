@@ -1,6 +1,8 @@
 package appzaliczenie.financemanager;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -91,7 +93,23 @@ public class ClientInfoActivity extends AppCompatActivity implements DatabaseOpe
     }
 
     public void onClientDelete(View view){
-        BackgroundWorker deleteClientWorker = new BackgroundWorker(this);
-        deleteClientWorker.execute(DELETE_CLIENT, id_client);
+        final BackgroundWorker deleteClientWorker = new BackgroundWorker(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Czy chcesz zlikiwdowac klienta? :)")
+                .setCancelable(false)
+                .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        deleteClientWorker.execute(DELETE_CLIENT, id_client);
+                    }
+                })
+                .setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }

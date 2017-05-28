@@ -1,18 +1,26 @@
 package appzaliczenie.financemanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainWindowActivity extends AppCompatActivity {
+public class MainWindowActivity extends AppCompatActivity implements DatabaseOperations{
 
     private SharedPreferences sp;
     private CheckConnection cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
+        if(sp.getString(ACCOUNT_CREATED, "").equals("")){
+            Intent intent = new Intent(this, MyProfileActivity.class);
+            startActivity(intent);
+            new Toast("Brak danych firmy, uzupelnij", this);
+            finish();
+        }
         setTitle("Okno po zalogowniu takie o");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_window);
