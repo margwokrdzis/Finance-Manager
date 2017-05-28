@@ -25,6 +25,7 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
 
     private EditText nameET, emailET, phoneNumberET, nipET, cityET, streetET, buildingNumberET, doorNumberET, postalCodeET;
     private SharedPreferences sp;
+    private SharedPreferences.Editor edit;
     private String id_company;
 
     @Override
@@ -43,6 +44,7 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
         postalCodeET = (EditText) findViewById(R.id.postalCodeET);
 
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
+        edit = sp.edit();
         id_company = sp.getString("id_company", "");
     }
 
@@ -62,6 +64,8 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
                 companyBuildingNumber.equals("") || companyStreet.equals("")) {
             new Toast("Podaj wszystkie dane", this);
         } else {
+            edit.putString(ACCOUNT_CREATED, ACCOUNT_CREATED);
+            edit.apply();
             BackgroundWorker loginWorker = new BackgroundWorker(this);
             loginWorker.execute(CREATE_COMPANY, id_company, companyName, companyEmail, companyPhoneNumber, companyNIP,
                     companyCity, companyPostalCode, companyStreet, companyBuildingNumber, companyDoorNumber);

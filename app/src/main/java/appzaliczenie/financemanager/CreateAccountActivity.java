@@ -25,12 +25,15 @@ public class CreateAccountActivity extends AppCompatActivity implements Database
         String password = passwordET.getText().toString();
         String repeatPassword = repeatPasswordET.getText().toString();
 
-        if(password.equals(repeatPassword)) {
-            BackgroundWorker loginWorker = new BackgroundWorker(this);
-            loginWorker.execute(CREATE_ACCOUNT, userName, password);
-        }
-        else{
-            msg = new Toast("Bledne dane", this);
+        if(userName.length()>4 && password.length()>6) {
+            if (password.equals(repeatPassword)) {
+                BackgroundWorker loginWorker = new BackgroundWorker(this);
+                loginWorker.execute(CREATE_ACCOUNT, userName, password);
+            } else {
+                msg = new Toast("Bledne dane", this);
+            }
+        }else{
+            new Toast("Login lub haslo za krotkie", this);
         }
     }
 }
