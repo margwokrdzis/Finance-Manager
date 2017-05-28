@@ -97,26 +97,21 @@ public class IncomeActivity extends ListActivity implements DatabaseOperations{
                 if (success == 1) {
                     incomings = json.getJSONArray(INCOMING_TAG);
 
-                    // looping through All Products
                     for (int i = 0; i < incomings.length(); i++) {
                         JSONObject c = incomings.getJSONObject(i);
 
-                        // Storing each json item in variable
                         String id = c.getString(ID_INCOMING_TAG);
                         String name = c.getString(TAG_NAME);
                         String ammount = c.getString(TAG_AMMOUNT);
                         String date = c.getString(TAG_DATE);
 
-                        // creating new HashMap
                         HashMap<String, String> map = new HashMap<>();
 
-                        // adding each child node to HashMap key => value
                         map.put(ID_INCOMING_TAG, id);
                         map.put(TAG_NAME, name);
                         map.put(TAG_AMMOUNT, ammount);
                         map.put(TAG_DATE, date);
 
-                        // adding HashList to ArrayList
                         incomingsList.add(map);
                     }
                 } else {

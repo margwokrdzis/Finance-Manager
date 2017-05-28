@@ -25,10 +25,7 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
 
     private EditText nameET, emailET, phoneNumberET, nipET, cityET, streetET, buildingNumberET, doorNumberET, postalCodeET;
     private SharedPreferences sp;
-    private ProgressDialog pDialog;
     private String id_company;
-    private JSONParser jsonParser;
-    private JSONObject json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +44,9 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
 
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
         id_company = sp.getString("id_company", "");
-        jsonParser = new JSONParser();
-        new GetCompanyInfo().execute();
     }
 
-    public void updateInfo(View view) {
+    public void onCreateCompany(View view) {
         String companyName = nameET.getText().toString();
         String companyEmail = emailET.getText().toString();
         String companyPhoneNumber = phoneNumberET.getText().toString();
@@ -73,55 +68,5 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
         }
     }
 
-    class GetCompanyInfo extends AsyncTask<String, String, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(MyProfileActivity.this);
-            pDialog.setMessage("Wczytuje dane firmy...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
-        }
-
-        protected String doInBackground(String... params) {
-            try {
-                int success;
-                List<NameValuePair> list = new ArrayList<>();
-                list.add(new BasicNameValuePair("id_company", id_company));
-                json = jsonParser.makeHttpRequest(GET_COMPANY_INFO_SERVICE, "GET", list);
-                success = json.getInt(SUCCESS_TAG);
-
-                if (success == 1) {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            try {
-                                JSONArray companyObj = json.getJSONArray(TAG_COMPANY);
-                                JSONObject company = companyObj.getJSONObject(0);
-                                nameET.setText(company.getString(TAG_COMPANY_NAME));
-                                emailET.setText(company.getString(TAG_COMPANY_EMAIL));
-                                phoneNumberET.setText(company.getString(TAG_COMPANY_PHONE_NUMBER));
-                                nipET.setText(company.getString(TAG_COMPANY_NIP));
-                                cityET.setText(company.getString(TAG_COMPANY_CITY));
-                                streetET.setText(company.getString(TAG_COMPANY_STREET));
-                                buildingNumberET.setText(company.getString(TAG_COMPANY_BUILDING_NUMBER));
-                                doorNumberET.setText(company.getString(TAG_COMPANY_DOOR_NUMBER));
-                                postalCodeET.setText(company.getString(TAG_COMPANY_POSTAL_CODE));
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }return null;}
-
-        protected void onPostExecute(String file_url) {
-            pDialog.dismiss();
-        }
-    }
 }
 

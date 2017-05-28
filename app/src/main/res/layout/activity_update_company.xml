@@ -25,7 +25,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Uzupełnij dane firmy"
+                android:text="Dane firmy"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
@@ -39,7 +39,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/companyNameET"
+                android:id="@+id/ucompanyNameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -55,7 +55,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/emailET"
+                android:id="@+id/uemailET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -71,7 +71,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/phoneET"
+                android:id="@+id/uphoneET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -89,7 +89,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/nipET"
+                android:id="@+id/unipET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -107,7 +107,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/cityET"
+                android:id="@+id/ucityET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -116,7 +116,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/streetET"
+                android:id="@+id/ustreetET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -125,7 +125,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/buildingNumET"
+                android:id="@+id/ubuildingNumET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -134,7 +134,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/doorNumET"
+                android:id="@+id/udoorNumET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -143,7 +143,7 @@
                 android:selectAllOnFocus="false" />
 
             <EditText
-                android:id="@+id/postalCodeET"
+                android:id="@+id/upostalCodeET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -155,8 +155,8 @@
                 android:id="@+id/updateInfoButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onCreateCompany"
-                android:text="Zapisz Dane" />
+                android:onClick="updateInfo"
+                android:text="Zaktualizuj dane" />
 
 
         </LinearLayout>

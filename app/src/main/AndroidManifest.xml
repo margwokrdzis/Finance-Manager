@@ -31,7 +31,9 @@
         <activity android:name=".MonthlyStatisticsActivity" />
         <activity android:name=".AddNewClientActivity" />
         <activity android:name=".MyProfileActivity" />
-        <activity android:name=".ClientInfoActivity"></activity>
+        <activity android:name=".ClientInfoActivity" />
+        <activity android:name=".CalculatorActivity" />
+        <activity android:name=".UpdateCompanyActivity"></activity>
     </application>
 
 </manifest>

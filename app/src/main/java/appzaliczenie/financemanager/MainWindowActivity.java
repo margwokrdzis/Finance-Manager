@@ -1,12 +1,14 @@
 package appzaliczenie.financemanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 public class MainWindowActivity extends AppCompatActivity {
 
+    private SharedPreferences sp;
     private CheckConnection cc;
 
     @Override
@@ -14,6 +16,7 @@ public class MainWindowActivity extends AppCompatActivity {
         setTitle("Okno po zalogowniu takie o");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_window);
+        cc = new CheckConnection(this);
     }
 
     public void onClientList(View view) {
@@ -65,7 +68,7 @@ public class MainWindowActivity extends AppCompatActivity {
         if(!cc.isNetworkConnected()){
             new Toast("Brak polaczenia z internetem", this);
         }else {
-            Intent intent = new Intent(this, MyProfileActivity.class);
+            Intent intent = new Intent(this, UpdateCompanyActivity.class);
             startActivity(intent);
         }
     }
@@ -74,6 +77,11 @@ public class MainWindowActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    public void onCalculator(View view){
+        Intent intent = new Intent(this, CalculatorActivity.class);
         startActivity(intent);
     }
 

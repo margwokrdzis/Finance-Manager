@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="1"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:baselineAligned="false">
 
 
     <TableLayout
@@ -31,11 +32,10 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/clientNameInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
 
         </TableRow>
@@ -53,11 +53,10 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/clientEmailInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
 
         </TableRow>
@@ -75,11 +74,10 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/clientPhoneNumbInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -96,11 +94,10 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/clientNipInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
 
         </TableRow>
@@ -118,11 +115,10 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/clientCityInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -134,16 +130,15 @@
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ulica"
+                android:text="Kod pocztowy"
                 android:textAlignment="viewStart"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/clientPostalCodeInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -155,16 +150,15 @@
                 android:id="@+id/textView19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Numer Budynku"
+                android:text="Ulica"
                 android:textAlignment="viewStart"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/clientStreetInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -176,16 +170,15 @@
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Numer lokalu"
+                android:text="Numer Budynku"
                 android:textAlignment="viewStart"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView32"
+                android:id="@+id/clientBuildingNumbInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
         </TableRow>
 
@@ -197,16 +190,15 @@
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kod pocztowy"
+                android:text="Numer lokalu"
                 android:textAlignment="viewStart"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/clientDoorNumbInfoTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="TextView"
                 android:textSize="14sp" />
         </TableRow>
     </TableLayout>
@@ -219,6 +211,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginTop="50dp"
+        android:onClick="onClientDelete"
         android:text="Usuń Klienta" />
 
 </LinearLayout>

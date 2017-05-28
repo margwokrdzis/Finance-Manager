@@ -39,7 +39,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/newCompanyNameET"
+                android:id="@+id/newNameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

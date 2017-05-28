@@ -92,7 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:text="Kalkulator"/>
+                android:onClick="onCalculator"
+                android:text="Kalkulator" />
 
             <Button
                 android:id="@+id/logoutButton"

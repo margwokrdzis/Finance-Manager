@@ -23,10 +23,8 @@
 
     <Button
         android:id="@+id/addNewIncomeButton"
-        android:layout_width="193dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
         android:onClick="addIncomeItem"
         android:text="Dodaj" />
 
