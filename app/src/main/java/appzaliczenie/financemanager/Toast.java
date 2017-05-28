@@ -7,7 +7,7 @@ public class Toast {
     public Toast(String komunikat, Context context){
         int duration = android.widget.Toast.LENGTH_SHORT;
         android.widget.Toast toast = android.widget.Toast.makeText(context, komunikat, duration);
-        toast.setGravity(Gravity.END,0,0);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
         toast.show();
     }
 }

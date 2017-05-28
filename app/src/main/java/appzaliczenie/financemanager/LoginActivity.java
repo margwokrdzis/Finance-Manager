@@ -3,6 +3,8 @@ package appzaliczenie.financemanager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,9 +17,11 @@ public class LoginActivity extends AppCompatActivity implements DatabaseOperatio
     private CheckBox rememberLoginAndPassword;
     private SharedPreferences sp;
     private SharedPreferences.Editor edit;
+    private CheckConnection cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -32,21 +36,29 @@ public class LoginActivity extends AppCompatActivity implements DatabaseOperatio
 
 
     public void createAccount(View view) {
-        Intent intent = new Intent(this, CreateAccountActivity.class);
-        startActivity(intent);
+        if(!cc.isNetworkConnected()){
+            new Toast("Brak polaczenia z internetem", this);
+        }else {
+            Intent intent = new Intent(this, CreateAccountActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void onLogin(View view){
-        String userName = userNameET.getText().toString();
-        String password = passwordET.getText().toString();
+        if(!cc.isNetworkConnected()){
+            new Toast("Brak polaczenia z internetem", this);
+        }else {
+            String userName = userNameET.getText().toString();
+            String password = passwordET.getText().toString();
 
-        if(rememberLoginAndPassword.isChecked())
-            saveLoginAndPassword();
-        else
-            clearSavedData();
+            if (rememberLoginAndPassword.isChecked())
+                saveLoginAndPassword();
+            else
+                clearSavedData();
 
-        BackgroundWorker loginWorker = new BackgroundWorker(this);
-        loginWorker.execute(LOGIN, userName, password);
+            BackgroundWorker loginWorker = new BackgroundWorker(this);
+            loginWorker.execute(LOGIN, userName, password);
+        }
     }
 
     private void restoreLoginAndPassword(){
@@ -70,4 +82,5 @@ public class LoginActivity extends AppCompatActivity implements DatabaseOperatio
         edit.putString("password", "");
         edit.apply();
     }
+
 }
