@@ -9,7 +9,6 @@ import android.widget.ListAdapter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -161,9 +160,11 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
         String companyEmail = params[3];
         String companyPhoneNumber = params[4];
         String companyNIP = params[5];
-        String companyAdress = params[6];
-        String companyCity = params[7];
-        String companyPostalCode = params[8];
+        String companyCity = params[6];
+        String companyPostalCode = params[7];
+        String companyStreet = params[8];
+        String companyBuildingNumber = params[9];
+        String comapnyDoorNumber = params[10];
 
         List<NameValuePair> list = new ArrayList<>();
         list.add(new BasicNameValuePair("id_company", id_company));
@@ -171,9 +172,11 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
         list.add(new BasicNameValuePair("companyEmail", companyEmail));
         list.add(new BasicNameValuePair("companyPhoneNumber", companyPhoneNumber));
         list.add(new BasicNameValuePair("companyNIP", companyNIP));
-        list.add(new BasicNameValuePair("companyAdress", companyAdress));
         list.add(new BasicNameValuePair("companyCity", companyCity));
         list.add(new BasicNameValuePair("companyPostalCode", companyPostalCode));
+        list.add(new BasicNameValuePair("street", companyStreet));
+        list.add(new BasicNameValuePair("building_number", companyBuildingNumber));
+        list.add(new BasicNameValuePair("door_number", comapnyDoorNumber));
 
         JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
         System.out.println(CREATE_COMPANY_SERVICE);

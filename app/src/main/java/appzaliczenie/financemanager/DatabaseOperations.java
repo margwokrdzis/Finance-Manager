@@ -5,17 +5,13 @@ public interface DatabaseOperations {
     String LOGIN = "login";
     String CREATE_ACCOUNT = "createAccount";
     String CREATE_COMPANY = "createCompany";
-
     String CREATE_CLIENT = "createClient";
     String GET_CLIENT_LIST = "getClients";
     String GET_INCOME_LIST = "getIncomeList";
-
     String CHANGE_CLIENT_DATA = "changeClient";
     String CHANGE_COMPANY_DATA = "changeCompany";
-
     String ADD_OUTGOING = "addOutgoing";
     String ADD_INCOME = "addIncome";
-
     String DELETE_CLIENT = "deleteClient";
     String DELETE_OUTGOING = "deleteOutgoing";
     String DELETE_INCOME = "deleteIncome";
@@ -35,7 +31,7 @@ public interface DatabaseOperations {
     String GET_COMPANY_ID_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getCompanyID.php";
     String GET_INCOME_LIST_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getIncomes.php";
     String GET_OUTGOINGS_LIST_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getOutgoings.php";
-
+    String GET_COMPANY_INFO_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getCompanyInfo.php";
 
     String SUCCESS_TAG = "success";
     String ID_COMPANY_TAG = "id_company";
@@ -46,4 +42,18 @@ public interface DatabaseOperations {
     String TAG_NAME = "name";
     String TAG_DATE = "date";
     String TAG_AMMOUNT = "ammount";
+
+    //company info
+    String TAG_COMPANY = "company";
+    String TAG_COMPANY_NAME = "companyName";
+    String TAG_COMPANY_EMAIL = "companyEmail";
+    String TAG_COMPANY_PHONE_NUMBER = "companyPhoneNumber";
+    String TAG_COMPANY_NIP = "companyNIP";
+    String TAG_COMPANY_CITY = "companyCity";
+    String TAG_COMPANY_POSTAL_CODE = "companyPostalCode";
+    String TAG_COMPANY_STREET = "street";
+    String TAG_COMPANY_BUILDING_NUMBER = "building_number";
+    String TAG_COMPANY_DOOR_NUMBER = "door_number";
+
+
 }
