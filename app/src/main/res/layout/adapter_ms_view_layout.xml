@@ -12,7 +12,7 @@
         android:layout_height="30dp"
         android:layout_weight="33.3"
         android:gravity="center"
-        android:text="Miesiąc "
+        android:text="Miesiąc"
         android:textAlignment="center" />
 
     <TextView
