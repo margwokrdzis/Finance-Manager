@@ -30,7 +30,7 @@ public class ClientListActivity extends ListActivity implements DatabaseOperatio
     private SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Lista Klientow");
+        setTitle("Lista Klientów");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_list);
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);

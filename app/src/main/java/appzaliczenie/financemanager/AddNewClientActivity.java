@@ -16,6 +16,7 @@ public class AddNewClientActivity extends AppCompatActivity implements DatabaseO
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Klienci");
         setContentView(R.layout.activity_add_new_client);
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
         id_company = sp.getString("id_company", "");

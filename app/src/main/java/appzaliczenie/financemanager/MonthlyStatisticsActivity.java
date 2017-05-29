@@ -31,6 +31,7 @@ public class MonthlyStatisticsActivity extends ListActivity implements DatabaseO
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Statystyki");
         setContentView(R.layout.activity_monthly_statistics);
         setTitle("Miesieczne statystyki");
 

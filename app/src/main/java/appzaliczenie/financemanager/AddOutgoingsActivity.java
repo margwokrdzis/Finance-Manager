@@ -31,7 +31,7 @@ public class AddOutgoingsActivity extends AppCompatActivity implements DatabaseO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Okno dodawania wpłat");
+        setTitle("Dodaj wypłatę");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_outgoings);
 

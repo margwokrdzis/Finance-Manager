@@ -21,7 +21,7 @@ public class MainWindowActivity extends AppCompatActivity implements DatabaseOpe
             new Toast("Brak danych firmy, uzupelnij", this);
             finish();
         }
-        setTitle("Okno po zalogowniu takie o");
+        setTitle("Finance Manager");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_window);
         cc = new CheckConnection(this);
@@ -54,14 +54,6 @@ public class MainWindowActivity extends AppCompatActivity implements DatabaseOpe
         }
     }
 
-    public void onCreateInvoice(View view) {
-        if(!cc.isNetworkConnected()){
-            new Toast("Brak polaczenia z internetem", this);
-        }else {
-            Intent intent = new Intent(this, CreateInvoiceActivity.class);
-            startActivity(intent);
-        }
-    }
 
     public void onMonthlyStatistics(View view) {
         if(!cc.isNetworkConnected()){

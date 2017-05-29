@@ -34,7 +34,7 @@ public class AddIncomeActivity extends AppCompatActivity implements DatabaseOper
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Okno dodawania wpłat");
+        setTitle("Dodaj wpłatę");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income);
 

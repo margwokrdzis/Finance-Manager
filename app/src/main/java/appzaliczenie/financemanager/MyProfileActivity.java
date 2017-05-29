@@ -31,6 +31,7 @@ public class MyProfileActivity extends AppCompatActivity implements DatabaseOper
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Moj Profil");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
