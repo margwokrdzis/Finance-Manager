@@ -11,8 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="1"
-    android:background="@color/colorBackGround">>
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/textView9"
@@ -24,46 +23,27 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:elevation="0dp"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:verticalScrollbarPosition="left">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="150dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="50dp">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <ImageButton
-                        android:id="@+id/monthyStatsButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:onClick="onMonthlyStatistics"
-                        android:padding="10dp"
-                        app:srcCompat="@mipmap/monthly_stat" />
-
-                    <ImageButton
-                        android:id="@+id/calcButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:onClick="onCalculator"
-                        android:padding="10dp"
-                        app:srcCompat="@mipmap/tools" />
-                </TableRow>
+                android:layout_marginTop="50dp"
+                android:layout_weight="0.56">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -74,10 +54,9 @@
                         android:id="@+id/updateButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:background="@null"
                         android:onClick="onUpdateProfile"
-                        android:padding="10dp"
+                        android:padding="15dp"
                         app:srcCompat="@mipmap/my_profile" />
 
                     <ImageButton
@@ -87,8 +66,30 @@
                         android:background="@null"
                         android:baselineAlignBottom="false"
                         android:onClick="onClientList"
-                        android:padding="10dp"
+                        android:padding="15dp"
                         app:srcCompat="@mipmap/client_list" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Moje Dane" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Lista Klientów" />
+
                 </TableRow>
 
                 <TableRow
@@ -97,23 +98,89 @@
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/showIncomeButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:onClick="onIncomeList"
-                        android:padding="10dp"
-                        app:srcCompat="@mipmap/income" />
-
-                    <ImageButton
                         android:id="@+id/showOutgoingsButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:onClick="onOutgoingsList"
-                        android:padding="10dp"
+                        android:padding="15dp"
                         app:srcCompat="@mipmap/outgoings" />
 
+                    <ImageButton
+                        android:id="@+id/showIncomeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onIncomeList"
+                        android:padding="15dp"
+                        app:srcCompat="@mipmap/income" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Wypłaty" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Wpłaty" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/calcButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onCalculator"
+                        android:padding="15dp"
+                        app:srcCompat="@mipmap/tools" />
+
+                    <ImageButton
+                        android:id="@+id/monthyStatsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:onClick="onMonthlyStatistics"
+                        android:padding="15dp"
+                        app:srcCompat="@mipmap/monthly_stat" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Kalkulator" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Bilans" />
                 </TableRow>
 
                 <TableRow
@@ -128,7 +195,7 @@
                         android:layout_height="match_parent"
                         android:background="@null"
                         android:onClick="onLogout"
-                        android:padding="10dp"
+                        android:padding="15dp"
                         app:srcCompat="@mipmap/logout" />
                 </TableRow>
 
