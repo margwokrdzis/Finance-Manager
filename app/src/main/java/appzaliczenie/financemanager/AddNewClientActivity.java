@@ -12,12 +12,14 @@ public class AddNewClientActivity extends AppCompatActivity implements DatabaseO
     private EditText nameET, emailET, phoneNUmberET, nipET, cityET, postalCodeET, streetET, buildingNumberET, doorNumberET;
     private SharedPreferences sp;
     private String id_company;
+    private CheckData check;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_client);
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
         id_company = sp.getString("id_company", "");
+        check = new CheckData();
 
         nameET = (EditText) findViewById(R.id.newNameET);
         emailET = (EditText) findViewById(R.id.newEmailET);
@@ -46,9 +48,13 @@ public class AddNewClientActivity extends AppCompatActivity implements DatabaseO
                 clientStreet.equals("") || clientBuildingNumber.equals("")){
             new Toast("Wprowadz wszystkie dane", this);
         }else {
-            BackgroundWorker loginWorker = new BackgroundWorker(this);
-            loginWorker.execute(CREATE_CLIENT, id_company, clientName, clientEmail, clientPhoneNumber, clientNip,
-                    clientCity, clientPostalCode, clientStreet, clientBuildingNumber, clientDoorNumber);
+            if(check.checkEmail(clientEmail) && check.checkPhoneNumber(clientPhoneNumber)
+                    && check.checkPostalCode(clientPostalCode) && check.checkNip(clientNip)) {
+                BackgroundWorker loginWorker = new BackgroundWorker(this);
+                loginWorker.execute(CREATE_CLIENT, id_company, clientName, clientEmail, clientPhoneNumber, clientNip,
+                        clientCity, clientPostalCode, clientStreet, clientBuildingNumber, clientDoorNumber);
+            }else
+                new Toast("Bledne dane", this);
         }
     }
 }

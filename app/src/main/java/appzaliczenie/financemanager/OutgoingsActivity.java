@@ -1,6 +1,7 @@
 package appzaliczenie.financemanager;
 
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,6 +30,7 @@ public class OutgoingsActivity extends ListActivity implements DatabaseOperation
     private ArrayList<HashMap<String, String>> outgoingsList;
     private JSONArray outgoings = null;
     private SharedPreferences sp;
+    private ProgressDialog pDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Wydatki");
@@ -78,6 +80,11 @@ public class OutgoingsActivity extends ListActivity implements DatabaseOperation
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            pDialog = new ProgressDialog(OutgoingsActivity.this);
+            pDialog.setMessage("Operation in progress...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         protected String doInBackground(String... args) {
@@ -92,6 +99,12 @@ public class OutgoingsActivity extends ListActivity implements DatabaseOperation
 
                 if (success == 1) {
                     outgoings = json.getJSONArray(OUTGOING_TAG);
+                    HashMap<String, String> mapTag = new HashMap<>();
+                    mapTag.put(ID_OUTGOINGS_TAG, "Bilans miesieczny");
+                    mapTag.put(TAG_NAME, "Za co");
+                    mapTag.put(TAG_AMMOUNT, "Kwota");
+                    mapTag.put(TAG_DATE, "Data");
+                    outgoingsList.add(mapTag);
 
                     for (int i = 0; i < outgoings.length(); i++) {
                         JSONObject c = outgoings.getJSONObject(i);
@@ -133,7 +146,7 @@ public class OutgoingsActivity extends ListActivity implements DatabaseOperation
                     setListAdapter(adapter);
                 }
             });
-
+            pDialog.dismiss();
         }
     }
     public void addOutgoingsItem(View view) {

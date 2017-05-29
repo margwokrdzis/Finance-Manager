@@ -66,25 +66,19 @@ public class AddIncomeActivity extends AppCompatActivity implements DatabaseOper
                 }
         });
 
-
-// capture our View elements
         mDateDisplay = (TextView) findViewById(R.id.dateIncomeTW);
         mPickDate = (Button) findViewById(R.id.pickIncomeDateButton);
 
-        // add a click listener to the button
         mPickDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(DATE_DIALOG_ID);
             }
         });
-
-        // get the current date
         final Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        // display the current date (this method is below)
         updateDisplay();
 
         nameET = (EditText) findViewById(R.id.incomeDescriptionET);
@@ -108,9 +102,9 @@ public class AddIncomeActivity extends AppCompatActivity implements DatabaseOper
         mDateDisplay.setText(
                 new StringBuilder()
                         // Month is 0 based so add 1
-                        .append(mDay).append("-")
+                        .append(mYear).append("-")
                         .append(mMonth + 1).append("-")
-                        .append(mYear).append(" "));
+                        .append(mDay).append(""));
     }
 
     // the callback received when the user "sets" the date in the dialog

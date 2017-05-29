@@ -26,6 +26,7 @@ public interface DatabaseOperations {
     String GET_OUTGOINGS_LIST_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getOutgoings.php";
     String GET_COMPANY_INFO_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getCompanyInfo.php";
     String GET_CLIENT_INFO_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getClientInfo.php";
+    String GET_SUM_INCOME_SERVICE = "http://v-ie.uek.krakow.pl/~s174753/finance/getMonthlyStatistics.php";
 
     String SUCCESS_TAG = "success";
     String ID_COMPANY_TAG = "id_company";
@@ -61,5 +62,9 @@ public interface DatabaseOperations {
     String TAG_BUILDING_NUMBER = "building_number";
     String TAG_DOOR_NUMBER = "door_number";
 
+    //sum tag
+    String TAG_SUMMARY = "monthly";
+    String TAG_YEAR = "year";
+    String TAG_MONTH = "month";
 
 }
