@@ -26,6 +26,7 @@ public class UpdateCompanyActivity extends AppCompatActivity implements Database
     private String id_company;
     private JSONParser jsonParser;
     private JSONObject json;
+    private CheckData check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class UpdateCompanyActivity extends AppCompatActivity implements Database
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
         id_company = sp.getString("id_company", "");
         jsonParser = new JSONParser();
+        check = new CheckData();
         new UpdateCompanyActivity.GetCompanyInfo().execute();
     }
 
@@ -63,12 +65,16 @@ public class UpdateCompanyActivity extends AppCompatActivity implements Database
                 companyNIP.equals("") || companyCity.equals("") || companyPostalCode.equals("") ||
                 companyBuildingNumber.equals("") || companyStreet.equals("")) {
             new Toast("Podaj wszystkie dane", this);
-        } else {
-            BackgroundWorker loginWorker = new BackgroundWorker(this);
-            loginWorker.execute(UPDATE_COMPANY_DATA, id_company, companyName, companyEmail, companyPhoneNumber, companyNIP,
+        } else if(check.checkEmail(companyEmail) && check.checkPhoneNumber(companyPhoneNumber)
+                && check.checkPostalCode(companyPostalCode) && check.checkNip(companyNIP)) {
+            BackgroundWorker updateWorker = new BackgroundWorker(this);
+            updateWorker.execute(UPDATE_COMPANY_DATA, id_company, companyName, companyEmail, companyPhoneNumber, companyNIP,
                     companyCity, companyPostalCode, companyStreet, companyBuildingNumber, companyDoorNumber);
+        }else{
+            new Toast("Bledne dane", this);
         }
     }
+
 
     class GetCompanyInfo extends AsyncTask<String, String, String> {
 

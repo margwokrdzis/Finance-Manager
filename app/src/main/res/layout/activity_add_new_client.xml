@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Podaj kod pocztowy"
-                android:inputType="textCapWords|phone"
+                android:inputType="textPostalAddress"
                 android:selectAllOnFocus="false" />
 
             <Button

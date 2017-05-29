@@ -94,18 +94,15 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
         list.add(new BasicNameValuePair("building_number", building_number));
         list.add(new BasicNameValuePair("door_number", door_number));
 
-        // sending modified data through http request
-        // Notice that update product url accepts POST method
         JSONObject json = jsonParser.makeHttpRequest(type, "POST", list);
 
-        // check json success tag
         try {
             int success = json.getInt(SUCCESS_TAG);
 
             if (success == 1) {
                 ((Activity) context).finish();
             } else {
-                // failed to update product
+                showToast();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -172,11 +169,23 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
             int success = json.getInt(SUCCESS_TAG);
 
             if (success == 1) {
-                Intent intent = new Intent(context, MainWindowActivity.class);
-                context.startActivity(intent);
+                if(operationType.equals(ADD_OUTGOING)) {
+                    Intent intent = new Intent(context, OutgoingsActivity.class);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                }else if(operationType.equals(ADD_INCOME)){
+                    Intent intent = new Intent(context, OutgoingsActivity.class);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                }
 
             } else {
-                //blad
+                if(pDialog.isShowing()) {
+                    pDialog.dismiss();
+                    showToast();
+                }else{
+                    showToast();
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -199,25 +208,26 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
             if (success == 1) {
                 int idGetSuccess;
                 try {
-                    // Building Parameters
                     List<NameValuePair> idList = new ArrayList<>();
                     idList.add(new BasicNameValuePair("userName", userName));
 
                     JSONObject jsonID = jsonParser.makeHttpRequest(GET_COMPANY_ID_SERVICE, "GET", idList);
 
-
-                    // json success tag
                     idGetSuccess = json.getInt(SUCCESS_TAG);
                     if (idGetSuccess == 1) {
                         JSONArray idObj = jsonID.getJSONArray(ID_COMPANY_TAG); // JSON Array
 
                         JSONObject id = idObj.getJSONObject(0);
 
-
                         id_company =  id.getString(ID_COMPANY_TAG);
 
                     }else{
-                        // product with pid not found
+                        if(pDialog.isShowing()) {
+                            pDialog.dismiss();
+                            showToast();
+                        }else{
+                            showToast();
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -237,15 +247,12 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
                 }
 
             } else {
-                Handler handler = new Handler(Looper.getMainLooper());
-
-                handler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        new Toast("Login zajety", context);
-                    }
-                });
+                if(pDialog.isShowing()) {
+                    pDialog.dismiss();
+                    showToast();
+                }else{
+                    showToast();
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -294,10 +301,28 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
                 }
 
             } else {
-                //blad
+                if(pDialog.isShowing()) {
+                    pDialog.dismiss();
+                    showToast();
+                }else{
+                    showToast();
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+        private void showToast(){
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+
+                @Override
+                public void run() {
+                    new Toast("Error. Sprawdz dane", context);
+
+                }
+            });
+        }
+
 }

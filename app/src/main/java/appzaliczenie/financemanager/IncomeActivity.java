@@ -1,6 +1,7 @@
 package appzaliczenie.financemanager;
 
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,10 +27,11 @@ import java.util.List;
 
 public class IncomeActivity extends ListActivity implements DatabaseOperations{
 
-    JSONParser jParser = new JSONParser();
-    ArrayList<HashMap<String, String>> incomingsList;
-    JSONArray incomings = null;
-    SharedPreferences sp;
+    private JSONParser jParser = new JSONParser();
+    private ArrayList<HashMap<String, String>> incomingsList;
+    private JSONArray incomings = null;
+    private SharedPreferences sp;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,35 +42,12 @@ public class IncomeActivity extends ListActivity implements DatabaseOperations{
         sp = getSharedPreferences("appzaliczenie.financemanager", Context.MODE_PRIVATE);
         incomingsList = new ArrayList<>();
         new LoadIncomings().execute();
-        ListView lv = getListView();
-
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // getting values from selected ListItem
-                String incomeID = ((TextView) view.findViewById(R.id.incomeIdTV)).getText().toString();
-
-                // Starting new intent
-               // Intent in = new Intent(getApplicationContext(), EditProductActivity.class);
-                // sending pid to next activity
-               // in.putExtra(TAG_PID, pid);
-
-                // starting new activity and expecting some response back
-              //  startActivityForResult(in, 100);
-            }
-        });
     }
 
-    // Response from Edit Product Activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // if result code 100
         if (resultCode == 100) {
-            // if result code 100 is received
-            // means user edited/deleted product
-            // reload this screen again
             Intent intent = getIntent();
             finish();
             startActivity(intent);
@@ -81,18 +60,30 @@ public class IncomeActivity extends ListActivity implements DatabaseOperations{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            pDialog = new ProgressDialog(IncomeActivity.this);
+            pDialog.setMessage("Operation in progress...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
         }
 
         protected String doInBackground(String... args) {
             // Building Parameters
-            String id_company = sp.getString("id_company","");
+            String id_company = sp.getString(ID_COMPANY_TAG,"");
             List<NameValuePair> list = new ArrayList<>();
-            list.add(new BasicNameValuePair("id_company", id_company));
+            list.add(new BasicNameValuePair(ID_COMPANY_TAG, id_company));
             // getting JSON string from URL
             JSONObject json = jParser.makeHttpRequest(GET_INCOME_LIST_SERVICE, "GET", list);
 
             try {
                 int success = json.getInt(SUCCESS_TAG);
+
+                HashMap<String, String> mapTag = new HashMap<>();
+                mapTag.put(ID_INCOMING_TAG, "Bilans miesieczny");
+                mapTag.put(TAG_NAME, "Za co");
+                mapTag.put(TAG_AMMOUNT, "Kwota");
+                mapTag.put(TAG_DATE, "Data");
+                incomingsList.add(mapTag);
 
                 if (success == 1) {
                     incomings = json.getJSONArray(INCOMING_TAG);
@@ -125,6 +116,7 @@ public class IncomeActivity extends ListActivity implements DatabaseOperations{
         }
 
         protected void onPostExecute(String file_url) {
+
             runOnUiThread(new Runnable() {
                 public void run() {
                     ListAdapter adapter = new SimpleAdapter(IncomeActivity.this, incomingsList,
@@ -134,6 +126,7 @@ public class IncomeActivity extends ListActivity implements DatabaseOperations{
                     setListAdapter(adapter);
                 }
             });
+            pDialog.dismiss();
 
         }
     }

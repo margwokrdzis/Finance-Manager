@@ -107,9 +107,9 @@ public class AddOutgoingsActivity extends AppCompatActivity implements DatabaseO
         mDateDisplay.setText(
                 new StringBuilder()
                         // Month is 0 based so add 1
-                        .append(mDay).append("-")
+                        .append(mYear).append("-")
                         .append(mMonth + 1).append("-")
-                        .append(mYear).append(" "));
+                        .append(mDay).append(""));
     }
 
     // the callback received when the user "sets" the date in the dialog
@@ -126,7 +126,7 @@ public class AddOutgoingsActivity extends AppCompatActivity implements DatabaseO
 
     public void onAddOutgoingItem(View view){
         String name = nameET.getText().toString();
-        String ammount = ammountET.getText().toString();
+        String ammount = "-" + ammountET.getText().toString();
         String date = mDateDisplay.getText().toString();
         System.out.println("DATAAAAAAAAAAAAA: " + date);
 
