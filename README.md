@@ -67,6 +67,12 @@ Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy.
 -Przycisk 'Kalkulator' - uruchamia systemowy kalkulator
 -Przycisk 'Wyloguj'- wylogowywuje użytkownika i przełącza aplikacje do aktywności logowania.
 
+
+## Struktura Bazy Danych
+Baza danych znajduje się na serwerze v-ie.uek.krakow.pl
+
+![Baza Danych](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/struct.png)
+
 ## Autorzy
 
 ### Krzysztof Pytel
