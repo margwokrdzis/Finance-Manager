@@ -25,5 +25,18 @@ gdzie bedziemy mogli stworzyć nowe konto z wybranym loginem oraz hasłem.
 
 
 Po pierwszym logowaniu, użytkownik zostanie poproszony o podanie danych swojej firmy.
+
 ![Dane firmy](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/3.png)
 ![Dane firmy](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/3.1.png)
+
+Gdy zatwierdzimy wprowadzone dane naszej firmy, zostaniemy przeniesieni do głownego menu naszej aplikacji.
+Menu składa się z 7 przycisków
+
+![Menu aplikacji](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/4.png)
+
+Przycisk 'Moje Dane' - przechowuje dane firmy użytkownika oraz pozwala na ich edytcje.
+
+![Dane firmy edytowanie](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/5.png)
+
+Przycisk 
+    
