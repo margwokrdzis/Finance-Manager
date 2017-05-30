@@ -38,5 +38,14 @@ Przycisk 'Moje Dane' - przechowuje dane firmy użytkownika oraz pozwala na ich e
 
 ![Dane firmy edytowanie](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/5.png)
 
-Przycisk 
+Przycisk 'Klienci' - przechowuje liste kluczowych klientów firmy.
+    -Opcja dodania nowego klienta
+    -Użytkownik po nacisnieći na liscie wybranego klienta, zobaczy jego pełne dane.
+    -Opcja usunięcia wybranego klienta
+
+![Lista Klientów](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/6.png)
+![Dodawanie klienta](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/7.1.png)
+![Lista klientów](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/7.2.png)
+![Pełny podgląd klienta](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/7.3.png)
+    
     
