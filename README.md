@@ -69,5 +69,5 @@ Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy.
 
 ## Autorzy
 
-# Krzysztof Pytel
-# Marcin Gwóźdź
+### Krzysztof Pytel
+### Marcin Gwóźdź
