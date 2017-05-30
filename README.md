@@ -58,8 +58,8 @@ Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy.
 -Przycisk 'Wpłaty' - przechowuje liste wpłat(przychodów) firmy.
     -Dziala analogicznie jak 'wypłaty'
     
-![Lista wpłat z wpisami](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/9.png)
-
+  
+![Lista wyłat z wpisami](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/9.png)
 -Przycisk 'Bilans' - przechowuje bilans finansowy dla danego miesiąca.
 
 ![Bilans](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/10.png)
