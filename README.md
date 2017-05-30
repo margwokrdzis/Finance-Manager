@@ -11,8 +11,9 @@ Głowna funkcjonalność aplikacji:
     - Możliwość akutalizacji tabel o kolejne pozycje.
 - Wszystkie dane zapisywane na serwerze.
 
-Obsługiwanie gotowej Aplikacji
+## Obsługiwanie gotowej Aplikacji
 
 Podczas uruchomienia aplikacji, ukazuję nam się okno do logowania z opcja stworzenia konto gdy jeszcze nie mamy.
     -Dodatkową opcją jest możliwość zapamietania hasła.
-    ![Image of Yaktocat](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/1.png)
+    
+![Image of Yaktocat](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/1.png)
