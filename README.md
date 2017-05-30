@@ -62,7 +62,7 @@ Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy.
 
 -Przycisk 'Bilans' - przechowuje bilans finansowy dla danego miesiąca.
 
-![Bilans](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/9.png)
+![Bilans](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/10.png)
 
 -Przycisk 'Kalkulator' - uruchamia systemowy kalkulator
 -Przycisk 'Wyloguj'- wylogowywuje użytkownika i przełącza aplikacje do aktywności logowania.
