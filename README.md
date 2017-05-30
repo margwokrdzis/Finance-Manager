@@ -17,3 +17,12 @@ Podczas uruchomienia aplikacji, ukazuję nam się okno do logowania z opcja stwo
     -Dodatkową opcją jest możliwość zapamietania hasła.
     
 ![Image of Yaktocat](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/1.png)
+
+Po wybraniu opcji Stworz Konto zostaniemy przeniesieni do kolejnej aktywności
+gdzie bedziemy mogli stworzyć nowe konto z wybranym loginem oraz hasłem.
+
+![Image of Yaktocat](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/2.png)
+
+
+Po pierwszym logowaniu, użytkownik zostanie poproszony o podanie danych swojej firmy.
+
