@@ -174,7 +174,7 @@ public class BackgroundWorker extends AsyncTask<String, String, String> implemen
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 }else if(operationType.equals(ADD_INCOME)){
-                    Intent intent = new Intent(context, OutgoingsActivity.class);
+                    Intent intent = new Intent(context, IncomeActivity.class);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 }

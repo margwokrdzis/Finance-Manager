@@ -46,16 +46,7 @@ public class OutgoingsActivity extends ListActivity implements DatabaseOperation
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // getting values from selected ListItem
-                String outgoingID = ((TextView) view.findViewById(R.id.outgoingIdTV)).getText().toString();
 
-                // Starting new intent
-                // Intent in = new Intent(getApplicationContext(), EditProductActivity.class);
-                // sending pid to next activity
-                // in.putExtra(TAG_PID, pid);
-
-                // starting new activity and expecting some response back
-                //  startActivityForResult(in, 100);
             }
         });
     }
