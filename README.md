@@ -48,4 +48,26 @@ Przycisk 'Klienci' - przechowuje liste kluczowych klientów firmy.
 ![Lista klientów](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/7.2.png)
 ![Pełny podgląd klienta](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/7.3.png)
     
+Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy. 
+    -Opcja dodania kolejnego wpisu [Za co/Kwota/Data]
     
+![Lista wypłaty](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.png)
+![Dodawanie wydatku](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.1.png)
+![Lista wypłat z wpisami](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.3.png)
+
+-Przycisk 'Wpłaty' - przechowuje liste wpłat(przychodów) firmy.
+    -Dziala analogicznie jak 'wypłaty'
+    
+![Lista wpłat z wpisami](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/9.png)
+
+-Przycisk 'Bilans' - przechowuje bilans finansowy dla danego miesiąca.
+
+![Bilans](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/9.png)
+
+-Przycisk 'Kalkulator' - uruchamia systemowy kalkulator
+-Przycisk 'Wyloguj'- wylogowywuje użytkownika i przełącza aplikacje do aktywności logowania.
+
+## Autorzy
+
+# Krzysztof Pytel
+# Marcin Gwóźdź
