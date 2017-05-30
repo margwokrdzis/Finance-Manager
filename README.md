@@ -16,13 +16,14 @@ Głowna funkcjonalność aplikacji:
 Podczas uruchomienia aplikacji, ukazuję nam się okno do logowania z opcja stworzenia konto gdy jeszcze nie mamy.
     -Dodatkową opcją jest możliwość zapamietania hasła.
     
-![Image of Yaktocat](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/1.png)
+![Okno logowania](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/1.png)
 
 Po wybraniu opcji Stworz Konto zostaniemy przeniesieni do kolejnej aktywności
 gdzie bedziemy mogli stworzyć nowe konto z wybranym loginem oraz hasłem.
 
-![Image of Yaktocat](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/2.png)
+![Tworzenie Konta](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/2.png)
 
 
 Po pierwszym logowaniu, użytkownik zostanie poproszony o podanie danych swojej firmy.
-
+![Dane firmy](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/3.png)
+![Dane firmy](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/3.1.png)
