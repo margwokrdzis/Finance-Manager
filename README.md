@@ -53,7 +53,7 @@ Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy.
     
 ![Lista wypłaty](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.png)
 ![Dodawanie wydatku](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.1.png)
-![Lista wypłat z wpisami](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.3.png)
+![Lista wypłat z wpisami](https://raw.githubusercontent.com/margwokrdzis/Finance-Manager/master/images/8.2.png)
 
 -Przycisk 'Wpłaty' - przechowuje liste wpłat(przychodów) firmy.
     -Dziala analogicznie jak 'wypłaty'
