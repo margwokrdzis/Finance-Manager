@@ -68,6 +68,70 @@ Przycisk 'wypłaty' - przechowuje liste wydatków(Kosztów) firmy.
 -Przycisk 'Wyloguj'- wylogowywuje użytkownika i przełącza aplikacje do aktywności logowania.
 
 
+## Opis Aktywności oraz Klas
+
+AddIncomeActivity
+    Aktywność odpowiadająca za dodawanie kolejnych wpisów 'wpłat' firmy użytkownika.
+    
+AddNewClientActivity
+    Aktywność odpowiadająca za dodawanie nowych klientów firmy użytkownika.
+    
+AddOutgoingsActivity
+    Aktywność odpowiadająca za doawnie kolejnych wpisów "wypłat" firmy uzytkownika.
+
+BackgroundWorker
+    Klasa odpowiadająca za komunikacje z baza danych.
+
+CalculatorActivity
+    Aktywność odpowiadająca za uruchamianie kalkulatora systemowego.
+    
+CheckConnection
+    Klasa odpowiadająca za sprawdzenie połączenia internetowego.
+
+CheckData
+    Klasa odpowiadająca za sprawdzanie poprawności danych wprowadzanych przez użytkownika np: (mail.nip,telefon).
+    
+ClientInfoActivity
+    Aktywność odpowiadająca za wczytanie i ukazanie pełnych danych klienta z listy klientów użytkownika.
+    
+ClientListActivity
+    Aktywność odpowiadająca za przechowywanie listy klientów użytkownika.
+    
+CreateAccountActivity
+    Aktywność odpowiadająca za tworzenie nowego użytkownika aplikacji.
+    
+DataBaseOperations
+    Interfejs z tagami do komunikacji z baza i adresy do "serwisow".
+    
+IncomeActivity
+    Aktywność przechowująca liste wpłat (przychodów) firmy użytkownika.
+
+JSONParser
+    Parser do parsowania danych przesylanych przez serwisy.
+    
+LoginActivity
+    Aktywność odpowiadająca za logowanie do aplikacji oraz tworzenia nowych kont uzytkowników.
+    
+MainWindowActivity
+    Aktywność stanowiąca głowne menu aplikacji.
+    
+MonthlyStatisticsActivity
+    Aktywność przechowująca miesieczny bilans finansowy użytkownika.
+
+MyProfileActivity
+    Aktywność przechowująca dane firmy użytkownika(Dane można edytować).
+
+OutgoingsActivity
+    Aktywność przechowująca liste wypłat(kosztów) firmy użytkownika.
+
+Toast
+    Klasa stworzon do tworzenia dymków.
+    
+UpdateCompanyActivity
+    Aktywność zajmująca się akutualizowaniem danych firmy użtkownika.
+  
+  
+  
 ## Struktura Bazy Danych
 Baza danych znajduje się na serwerze v-ie.uek.krakow.pl
 
